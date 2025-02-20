@@ -1,0 +1,6 @@
+duckduckgo_search
+gradio
+markdownify
+pandas
+requests
+smolagents
