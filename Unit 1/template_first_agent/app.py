@@ -4,6 +4,7 @@ import requests
 import pytz
 import yaml
 from tools.final_answer import FinalAnswerTool
+from typing import Union
 
 from Gradio_UI import GradioUI
 
@@ -32,6 +33,18 @@ def get_weather(city: str, humidity: bool = True)-> str: # it's important to spe
         return output
     except Exception as e:
         return f"Error fetching weather data for {city}: {str(e)}"
+
+@tool
+def multiplicator(a: float, b: float)-> str:
+    """A tool that has two numbers as input and returns their product.
+    Args:
+        a: integer or decimal number
+        b: integer or decimal number
+    """
+    try:
+        return str(a * b)
+    except Exception as e:
+        return f"Error multiply the two inputs: {str(e)}"
 
 @tool
 def get_current_time_in_timezone(timezone: str) -> str:
