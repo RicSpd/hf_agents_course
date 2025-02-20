@@ -4,7 +4,6 @@ import requests
 import pytz
 import yaml
 from tools.final_answer import FinalAnswerTool
-from typing import Union
 
 from Gradio_UI import GradioUI
 
