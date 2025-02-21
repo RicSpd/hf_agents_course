@@ -16,4 +16,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.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 }}
-        run: git push https://RicSpd:$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@huggingface.co/spaces/RicSpd/First_agent_template main
+        run: git push --force https://RicSpd:$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@huggingface.co/spaces/RicSpd/First_agent_template main
