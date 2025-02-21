@@ -1,11 +1,15 @@
-from smolagents import CodeAgent,DuckDuckGoSearchTool, HfApiModel,load_tool,tool
+import os
 import datetime
 import requests
 import pytz
 import yaml
+from dotenv import load_dotenv, find_dotenv
+from smolagents import CodeAgent, DuckDuckGoSearchTool, HfApiModel, load_tool, tool
 from tools.final_answer import FinalAnswerTool
-
 from Gradio_UI import GradioUI
+
+load_dotenv(find_dotenv())
+
 
 # Below is an example of a tool that does nothing. Amaze us with your creativity !
 @tool
@@ -92,5 +96,9 @@ agent = CodeAgent(
     prompt_templates=prompt_templates
 )
 
-
-GradioUI(agent).launch()
+if os.getenv('ENV') == 'local':
+    message = input('Ask something to your agent: ')
+    result = agent.run(message)
+    result
+else:
+    GradioUI(agent).launch()
